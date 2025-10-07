@@ -8,6 +8,7 @@ async function bootstrap() {
       '📡 DATABASE_URL:',
       process.env.DATABASE_URL ? '✅ Presente' : '❌ Faltante',
     );
+    console.log('🔌 PORT variable:', process.env.PORT); // ← Agrega este log
 
     const app = await NestFactory.create(AppModule);
 
@@ -23,12 +24,13 @@ async function bootstrap() {
       credentials: true,
     });
 
-    const port = process.env.PORT || 3000;
+    // ✅ CAMBIO IMPORTANTE: Usa process.env.PORT sin valor por defecto 4000
+    const port = process.env.PORT || 3000; // Railway asigna el puerto automáticamente
 
     console.log(`🔄 Iniciando servidor en puerto ${port}...`);
     await app.listen(port);
 
-    console.log(`✅ Servidor ejecutándose en http://localhost:${port}`);
+    console.log(`✅ Servidor ejecutándose en puerto ${port}`);
   } catch (error: unknown) {
     console.error('❌ Error crítico al iniciar la aplicación:', error);
 
