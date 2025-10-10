@@ -16,7 +16,7 @@ async function bootstrap() {
     app.enableCors({
       origin: [
         'http://localhost:3000',
-        'https://www.tocadapp-landing.vercel.app/',
+        'https://tocadapp-landing.vercel.app',
         'https://www.tocadapp.com',
       ],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
